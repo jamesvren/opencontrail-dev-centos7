@@ -68,7 +68,7 @@ cd ..
 export sbtop=~/contrail/build/
 cd $sbtop/tool/packages/rpm/contrail
 
-#kver=uname -a |awk '{print $3}'
+#kver=`uname -a |awk '{print $3}'`
 #sed -i "/3.10.0-327.10.1.el7.x86_64/ s/$/ $kver/" contrail.spec
 #ln -s /usr/src/kernels/3.10.0-327.22.2.el7.x86_64 /usr/src/kernels/3.10.0-327.el7.x86_64 #check your kernel version in /usr/src/kernels
 
@@ -86,5 +86,5 @@ cd $sbtop/tool/packages/rpm/contrail
 #sed -i "s#tools/packaging/common/control_files#tools/packages/rpm/contrail#g" contrail.spec
 #sed -i "s#%{_distrorpmpkgdir}#%{_sbtop}/%{_distrorpmpkgdir}#g" contrail.spec |grep _distrorpmpkgdir
 
-JOBS=nproc
-SCONSFLAGS="-j $JOBS -Q debug=1" rpmbuild -ba --define "_sbtop $sbtop" contrail.spec
+JOBS=`nproc`
+SCONSFLAGS="-j $JOBS --md5-chunksiz=2 -Q debug=1" rpmbuild -ba --define "_sbtop $sbtop" contrail.spec
