@@ -11,7 +11,7 @@ sed -i -e 's/enabled=1/enabled=0/' /etc/yum.repos.d/epel.repo
 yum install -y --enablerepo="epel" scons protobuf protobuf-devel protobuf-compiler
 
 # install centos packages
-yum install -y git python-lxml wget gcc patch make unzip flex bison gcc-c++ openssl-devel autoconf automake vim python-devel python-setuptools
+yum install -y git python-lxml wget gcc patch make cmake unzip flex bison gcc-c++ openssl-devel autoconf automake vim python-devel python-setuptools
 
 # install centos packages that were not needed in centos 6.x, but are needed on centos 7
 yum install -y libtool kernel-devel bzip2 boost-devel tbb-devel libcurl-devel libxml2-devel zlib-devel
