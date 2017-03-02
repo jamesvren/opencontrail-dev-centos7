@@ -26,7 +26,12 @@ make a repo that can be used from the vagrant vm.
     $ curl https://storage.googleapis.com/git-repo-downloads/repo > ./repo && chmod a+x ./repo
 
     $ mkdir opencontrail_repo && cd opencontrail_repo ; \
-      ../repo init -u git@github.com:Juniper/contrail-vnc && ../repo sync
+      ../repo init -u git@github.com:Juniper/contrail-vnc 
+      
+Modify default.xml before sync, to add 'Juniper/' in the name, otherwise it will not find correct path.
+
+    $ vi .repo/manifests/default.xml
+    $ ../repo sync
 
     $ cd .. && tar czf opencontrail_repo.tgz opencontrail_repo && rm -rf opencontrail_repo
 
