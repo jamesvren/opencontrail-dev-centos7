@@ -28,7 +28,7 @@ make a repo that can be used from the vagrant vm.
     $ mkdir opencontrail_repo && cd opencontrail_repo ; \
       ../repo init -u git@github.com:Juniper/contrail-vnc 
       
-Modify default.xml before sync, to add 'Juniper/' in the name, otherwise it will not find correct path.
+Modify fetch="../juniper" on default.xml before sync, otherwise it will not find correct path.
 
     $ vi .repo/manifests/default.xml
     $ ../repo sync
