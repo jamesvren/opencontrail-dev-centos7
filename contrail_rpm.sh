@@ -17,7 +17,7 @@ cd ~/contrail/build
 CONTRAIL_VNC_REPO=https://github.com/Juniper/contrail-vnc
 CONTRAIL_BRANCH=R3.2
 rm -rf .repo
-repo init -u --no-clone-bundle $CONTRAIL_VNC_REPO -b $CONTRAIL_BRANCH
+repo init -u $CONTRAIL_VNC_REPO -b $CONTRAIL_BRANCH --no-clone-bundle 
 #repo init -u $CONTRAIL_VNC_REPO
 repo sync
 
