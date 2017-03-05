@@ -69,8 +69,9 @@ export sbtop=~/contrail/build/
 cd $sbtop/tool/packages/rpm/contrail
 
 kver=`uname -a |awk '{print $3}'`
+kver_v=`ls /usr/src/kernels/ | head -1`
 sed -i "/3.10.0-327.10.1.el7.x86_64/ s/$/ $kver/" contrail.spec
-ln -s /usr/src/kernels/3.10.0-327.22.2.el7.x86_64 /usr/src/kernels/3.10.0-327.el7.x86_64 #check your kernel version in /usr/src/kernels
+ln -s /usr/src/kernels/$kver_v /usr/src/kernels/$kver #check your kernel version in /usr/src/kernels
 
 cat <<EOF > dkms.conf.in
 PACKAGE_NAME=vrouter
