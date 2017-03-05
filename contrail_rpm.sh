@@ -71,7 +71,7 @@ cd $sbtop/tools/packages/rpm/contrail
 kver=`uname -a |awk '{print $3}'`
 kver_v=`ls /usr/src/kernels/ | head -1`
 sed -i "/3.10.0-327.10.1.el7.x86_64/ s/$/ $kver/" contrail.spec
-ln -s /usr/src/kernels/$kver_v /usr/src/kernels/$kver #check your kernel version in /usr/src/kernels
+sudo ln -s /usr/src/kernels/$kver_v /usr/src/kernels/$kver #check your kernel version in /usr/src/kernels
 
 cat <<EOF > dkms.conf.in
 PACKAGE_NAME=vrouter
@@ -88,4 +88,4 @@ sed -i "s#tools/packaging/common/control_files#tools/packages/rpm/contrail#g" co
 sed -i "s#%{_distrorpmpkgdir}#%{_sbtop}/%{_distrorpmpkgdir}#g" contrail.spec |grep _distrorpmpkgdir
 
 JOBS=`nproc`
-SCONSFLAGS="-j $JOBS -Q debug=1" rpmbuild -ba --define "_sbtop $sbtop" contrail.spec 2>&1 | tee build.log
+SCONSFLAGS="-j $JOBS" rpmbuild -ba --define "_sbtop $sbtop" contrail.spec 2>&1 | tee build.log
