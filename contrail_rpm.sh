@@ -65,13 +65,13 @@ cd ..
 #cd ../tools/sandesh
 #git checkout 440c5a58ad09f613419e1ba67bdd0acb688d21bc
 
+export sbtop=~/contrail/build/
+cd $sbtop/tools/packages/rpm/contrail
+
 kver=`uname -a |awk '{print $3}'`
 kver_v=`ls /usr/src/kernels/ | head -1`
 sed -i "/3.10.0-327.10.1.el7.x86_64/ s/$/ $kver/" contrail.spec
 ln -s /usr/src/kernels/$kver_v /usr/src/kernels/$kver #check your kernel version in /usr/src/kernels
-
-export sbtop=~/contrail/build/
-cd $sbtop/tools/packages/rpm/contrail
 
 cat <<EOF > dkms.conf.in
 PACKAGE_NAME=vrouter
